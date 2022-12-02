@@ -11,7 +11,7 @@ public class P01_SimpleGetRequest {
 
     /**
      * When users end request to /api/spartans endpoint
-     * Then user should be able see status code is 200
+     * Then user should be able to see status code is 200
      * And Print out response body into screen
      */
 
