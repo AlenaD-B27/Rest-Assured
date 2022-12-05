@@ -12,7 +12,7 @@ import java.util.Map;
 import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class SpartanWithPathParam extends SpartanTestBase {
+public class P01_SpartanWithPathParam extends SpartanTestBase {
 
     /*   Given accept type is Json
           And Id parameter value is 24
