@@ -61,6 +61,40 @@ public class SpartanWithPathParam extends SpartanTestBase {
 
     }
 
+    /*
+        Given Accept type is Json
+        And query parameter values are:
+        gender|Female
+        nameContains|e
+        When user sends GET request to /api/spartans/search
+        Then response status code should be 200
+        And response content-type: application/json
+        And "Female" should be in response payload
+        And "Janette" should be in response payload
+     */
+
+    @DisplayName("GET request /api/spartans/search with Query Param")
+    @Test
+    public void test3(){
+
+        Response response = given().accept(ContentType.JSON)
+                .and().queryParam("gender", "Female")
+                .and().queryParam("nameContains", "e")
+                .when().get("/api/spartans/search");
+
+        assertEquals(200,response.statusCode());
+        assertEquals(ContentType.JSON.toString(),response.contentType());
+        assertTrue(response.body().asString().contains("Female"));
+        assertTrue(response.body().asString().contains("Janette"));
+
+
+
+
+
+    }
+
+
+
 
 
 
