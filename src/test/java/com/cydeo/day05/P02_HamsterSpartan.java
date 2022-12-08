@@ -40,7 +40,7 @@ public class P02_HamsterSpartan extends SpartanTestBase {
                         "name", is("Meta"),
                         "gender", is("Female"),
                         "phone", is(1938695106))
-                .extract().response(); // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                .extract().response(); // !!!!!!!!!!! .jsonPath() if need to return JsonPath
 
         int id = response.path("id");
         System.out.println("id = " + id);
@@ -79,8 +79,8 @@ public class P02_HamsterSpartan extends SpartanTestBase {
         - Why we need to extract ?
             - Assume that we are gonna do verification against UI/DB.In that case I need to get data from API after doing verification
             - SO we need to sometimes List of names / ids etc to check
-            - That is why we need to initilaize as Response or JSonPAth (Since we know how to get data through this objects )
-               to get realted data taht you wanna verfiy
+            - That is why we need to initialize as Response or JSonPAth (Since we know how to get data through this objects )
+               to get related data that you wanna verify
          */
 
 
