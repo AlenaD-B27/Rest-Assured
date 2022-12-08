@@ -32,6 +32,7 @@ public class P02_HamsterSpartan extends SpartanTestBase {
          given().log().all().accept(ContentType.JSON)
                 .and().pathParam("id", 15)
                 .when().get("/api/spartans/{id}")
+                 .prettyPeek()
                  .then().log().ifValidationFails().statusCode(200)
              //    .statusCode(is(200))
                  .contentType(ContentType.JSON.toString())
@@ -42,6 +43,27 @@ public class P02_HamsterSpartan extends SpartanTestBase {
 
     }
 
+
+      /*
+        REQUEST
+            given().log().all() --> it will give all inforamtion anout your request (path/query params , URI , body etc )
+                  .method()
+                  .uri()
+                  .parameters() ......
+        RESPONSE
+
+             then().log().all() --> it will give all response information
+                         .ifValidationFails() --> it will print all response if one of the validation fails
+
+         */
+
+    // HOW TO PRINT RESPONSE BODY
+        /*
+            - response.prettyPrint() (String) ---> it is printing response body into screen
+
+            - response.prettyPeek() (Response) ---> it will print response into screen, returns Response   and allows us to continue chaining
+
+         */
 
 
 }
