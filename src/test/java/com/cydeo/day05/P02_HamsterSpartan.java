@@ -29,24 +29,29 @@ public class P02_HamsterSpartan extends SpartanTestBase {
     @Test
     public void test1() {
 
-         given().log().all().accept(ContentType.JSON)
+        Response response = given().log().all().accept(ContentType.JSON)
                 .and().pathParam("id", 15)
                 .when().get("/api/spartans/{id}")
-                 .prettyPeek()
-                 .then().log().ifValidationFails().statusCode(200)
-             //    .statusCode(is(200))
-                 .contentType(ContentType.JSON.toString())
-                 .body("id", is(15),
-                         "name", is("Meta"),
-                         "gender", is("Female"),
-                         "phone", is(1938695106));
+                .prettyPeek()
+                .then().log().ifValidationFails().statusCode(200)
+                //    .statusCode(is(200))
+                .contentType(ContentType.JSON.toString())
+                .body("id", is(15),
+                        "name", is("Meta"),
+                        "gender", is("Female"),
+                        "phone", is(1938695106))
+                .extract().response(); // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+        int id = response.path("id");
+        System.out.println("id = " + id);
+
 
     }
 
 
       /*
         REQUEST
-            given().log().all() --> it will give all inforamtion anout your request (path/query params , URI , body etc )
+            given().log().all() --> it will give all information about your request (path/query params , URI , body etc )
                   .method()
                   .uri()
                   .parameters() ......
@@ -63,6 +68,19 @@ public class P02_HamsterSpartan extends SpartanTestBase {
 
             - response.prettyPeek() (Response) ---> it will print response into screen, returns Response   and allows us to continue chaining
 
+         */
+
+    // HOW TO EXTRACT DATA AFTER DOING VALIDATION WITH HAMCREST ?
+        /*
+        - extract() --> method will help us to STORE data after doing verification as
+                response()
+                  OR
+                jsonPath()
+        - Why we need to extract ?
+            - Assume that we are gonna do verification against UI/DB.In that case I need to get data from API after doing verification
+            - SO we need to sometimes List of names / ids etc to check
+            - That is why we need to initilaize as Response or JSonPAth (Since we know how to get data through this objects )
+               to get realted data taht you wanna verfiy
          */
 
 
