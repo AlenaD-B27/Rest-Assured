@@ -78,7 +78,15 @@ public class P01_HRWithJsonPath extends HrTestBase {
 
         assertEquals(200, response.statusCode());
         assertEquals(ContentType.JSON.toString(),response.contentType());
-        //TODO
+        JsonPath jsonPath = response.jsonPath();
+        String secondCity = jsonPath.getString("items[1].city");
+        System.out.println("secondCity = " + secondCity);
+        String lastCity = jsonPath.getString("items[-1].city");
+        System.out.println("lastCity = " + lastCity);
+        List<String> allCountryIds = jsonPath.getList("items.country_id");
+        System.out.println("allCountryIds = " + allCountryIds);
+        List<String> citiesUK = jsonPath.getList("items.findAll {it.country_id == 'UK'}.city");
+        System.out.println("citiesUK = " + citiesUK);
 
     }
 
