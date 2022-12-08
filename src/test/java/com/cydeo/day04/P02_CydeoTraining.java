@@ -7,6 +7,8 @@ import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -76,7 +78,23 @@ public class P02_CydeoTraining extends CydeoTrainingBase {
     And verify all the batch number is 22
      */
 
-    //TODO
+    @DisplayName("GET /student/{batch} 22")
+    @Test
+    public void test2(){
+        Response response = given().accept(ContentType.JSON)
+                .and().pathParam("batch", 22)
+                .when().get("/student/batch/{batch}");
+
+        assertEquals(200,response.statusCode());
+        assertEquals("application/json;charset=UTF-8",response.contentType());
+        assertTrue(response.headers().hasHeaderWithName("date"));
+        assertEquals("envoy",response.header("server"));
+        JsonPath jsonPath = response.jsonPath();
+        List<Integer> batchNum = jsonPath.getList("students.batch");
+        assertTrue(batchNum.stream().allMatch(p -> p == 22));
+
+
+    }
 
 
 }
