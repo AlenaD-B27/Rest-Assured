@@ -31,7 +31,7 @@ public class P05_SpartanWithJsonPath extends SpartanTestBase {
         String gender = jsonPath.getString("gender");
         long phone = jsonPath.getLong("phone");
 
-        assertEquals(10, id);
+        assertEquals(24, id);
 
     }
 
