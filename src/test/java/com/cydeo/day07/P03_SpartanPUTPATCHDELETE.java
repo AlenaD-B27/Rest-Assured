@@ -30,7 +30,7 @@ public class P03_SpartanPUTPATCHDELETE extends SpartanTestBase {
                 .pathParam("id", id)
                 .body(requestBody)
                 .when().put("/api/spartans/{id}")
-                .then().statusCode(204).extract().jsonPath();// TODO Expected status code <204> but was <400>.
+                .then().statusCode(204).extract().jsonPath();
 
         given().accept(ContentType.JSON)
                 .pathParam("id", id)
