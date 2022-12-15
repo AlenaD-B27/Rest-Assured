@@ -3,7 +3,7 @@ package com.cydeo.utilities;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeAll;
 
-public class BookitTestBase {
+public abstract class BookitTestBase {
 
     @BeforeAll
     public static void init(){
