@@ -34,17 +34,6 @@ public class P02_ResponseTimeTest extends SpartanTestBase {
 
     }
 
-    @DisplayName("GET /api/spartans/search to validate with JsonSchemaValidator matchesJsonSchema")
-    @Test
-    public void test3() {
-
-        given().accept(ContentType.JSON)
-              //  .auth().basic("admin", "admin")
-                .when().get("/api/spartans/search")
-                .then().statusCode(200)
-                .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("SearchSpartansSchema.json"));
-
-    }
 
 
 }
