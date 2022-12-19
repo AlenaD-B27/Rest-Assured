@@ -35,4 +35,13 @@ public class P03_MovieXML{
 
 
     }
+
+    /**
+     *  HOMEWORK
+     * http://www.omdbapi.com/?apikey=81815fe6&s=Batman&page=2&r=xml
+     *
+     * - Try to ge all year information
+     */
+
+    //TODO
 }
