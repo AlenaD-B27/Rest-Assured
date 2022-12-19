@@ -56,4 +56,20 @@ public class P04_JsonSchemaValidation extends SpartanTestBase {
 
     }
 
+    /**
+     *     Do schema validation for ALLSPARTANS and POST SINGLE SPARTAN
+     *
+     *     ALL SPARTANS
+     *      1- Get all spartans by using /api/spartans
+     *      2- Validate schema by using  JsonSchemaValidator
+     *
+     *
+     *    POST SINGLE SPARTANS
+     *       1- Post single spartan
+     *       2- Validate schema by using  JsonSchemaValidator
+     *
+     */
+
+    //TODO
+
 }
