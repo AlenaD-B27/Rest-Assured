@@ -1,7 +1,9 @@
 package com.cydeo.day09;
 
 import com.cydeo.utilities.SpartanAuthTestBase;
+import com.cydeo.utilities.SpartanTestBase;
 import io.restassured.http.ContentType;
+import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,7 +15,7 @@ import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
 import static io.restassured.RestAssured.*;
 
-public class P02_ResponseTimeTest extends SpartanAuthTestBase {
+public class P02_ResponseTimeTest extends SpartanTestBase {
 
     @DisplayName("GET /api/spartans to get response time")
     @Test
@@ -29,6 +31,18 @@ public class P02_ResponseTimeTest extends SpartanAuthTestBase {
 
         System.out.println(response.getTimeIn(TimeUnit.MILLISECONDS));
 
+
+    }
+
+    @DisplayName("GET /api/spartans/search to validate with JsonSchemaValidator matchesJsonSchema")
+    @Test
+    public void test3() {
+
+        given().accept(ContentType.JSON)
+              //  .auth().basic("admin", "admin")
+                .when().get("/api/spartans/search")
+                .then().statusCode(200)
+                .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("SearchSpartansSchema.json"));
 
     }
 
