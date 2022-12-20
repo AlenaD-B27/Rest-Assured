@@ -7,6 +7,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.hamcrest.MatcherAssert.*;
@@ -70,6 +72,25 @@ public class P04_JsonSchemaValidation extends SpartanTestBase {
      *
      */
 
-    //TODO
+    @DisplayName("GET /api/spartans to validate with JsonSchemaValidator")
+    @Test
+    public void test4() {
+        given().accept(ContentType.JSON)
+                .when().get("/api/spartans")
+                .then().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("AllSpartansSchema.json"));
+    }
+
+    @DisplayName("POST /api/spartans to validate with JsonSchemaValidator")
+    @Test
+    public void test5() {
+
+        Map<String, Object> newSpartanInfo = new HashMap<>(Map.of("gender", "Female", "name", "Lidia", "phone", 3123127733L));
+
+        given().accept(ContentType.JSON).contentType(ContentType.JSON)
+                .body(newSpartanInfo)
+                .when().post("/api/spartans").then().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("SpartanPostSchema.json"));
+
+    }
+
 
 }
