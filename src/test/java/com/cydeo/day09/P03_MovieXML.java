@@ -24,14 +24,16 @@ public class P03_MovieXML{
         System.out.println(xmlPath.getString("root.movie.@year"));
 
 
-        // get me year title
+        // get me movie title
         System.out.println(xmlPath.getString("root.movie.@title"));
 
-        // get me year genre
+        // get me movie genre
 
-        // get me year writer
+        System.out.println(xmlPath.getString("root.movie.@genre"));
 
+        // get me movie writer
 
+        System.out.println(xmlPath.getString("root.movie.@writer"));
 
 
     }
@@ -43,5 +45,14 @@ public class P03_MovieXML{
      * - Try to ge all year information
      */
 
-    //TODO
+    @Test
+    public void test2() {
+       given().queryParam("apikey", "81815fe6")
+                .queryParam("s", "Batman")
+                .queryParam("page", 2)
+                .queryParam("r", "xml")
+                .when().get("http://www.omdbapi.com/")//.prettyPeek()
+               .xmlPath().getList("root.result.@year").forEach(System.out::println);
+    }
+
 }
