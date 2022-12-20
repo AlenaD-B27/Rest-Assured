@@ -1,4 +1,4 @@
-package com.cydeo.day09;
+package com.cydeo.day11;
 
 import com.cydeo.utilities.SpartanTestBase;
 import io.restassured.http.ContentType;
@@ -10,9 +10,6 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.hamcrest.MatcherAssert.*;
-import static org.hamcrest.Matchers.*;
 import static io.restassured.RestAssured.*;
 
 public class P04_JsonSchemaValidation extends SpartanTestBase {

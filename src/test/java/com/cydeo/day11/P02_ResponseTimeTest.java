@@ -1,17 +1,13 @@
-package com.cydeo.day09;
+package com.cydeo.day11;
 
-import com.cydeo.utilities.SpartanAuthTestBase;
 import com.cydeo.utilities.SpartanTestBase;
 import io.restassured.http.ContentType;
-import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
 import static io.restassured.RestAssured.*;
 

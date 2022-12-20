@@ -1,10 +1,10 @@
-package com.cydeo.day09;
+package com.cydeo.day11;
 
 import io.restassured.path.xml.XmlPath;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
+
 public class P03_MovieXML{
 
 
