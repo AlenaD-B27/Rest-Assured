@@ -25,7 +25,8 @@ public class P03_BookitSpecTest extends BookitTestBase {
 
         given().spec(BookitUtils.getRequestSpec("teacher"))
                 .when().get("/api/users/me")
-                .then().spec(BookitUtils.getResponseSpec(200));
+                .then().spec(BookitUtils.getResponseSpec(200))
+                .body("firstName",is("Barbabas"));
 
     }
 }
