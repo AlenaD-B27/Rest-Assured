@@ -47,12 +47,10 @@ public class P09_SpartanPOSTDDT extends SpartanTestBase {
                 .extract().jsonPath();
 
         Spartan actualSpartanFromResponse = jsonPath.getObject("data", Spartan.class);
+        newSpartan.setId(actualSpartanFromResponse.getId());
 
 
-        Assertions.assertEquals(newSpartan.getName(), actualSpartanFromResponse.getName());
-        Assertions.assertEquals(newSpartan.getGender(),actualSpartanFromResponse.getGender());
-        Assertions.assertEquals(newSpartan.getPhone(),actualSpartanFromResponse.getPhone());
-
+        Assertions.assertEquals(newSpartan, actualSpartanFromResponse);
     }
 
 
