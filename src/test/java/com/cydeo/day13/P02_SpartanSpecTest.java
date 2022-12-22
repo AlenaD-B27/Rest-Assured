@@ -5,6 +5,8 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import org.junit.jupiter.api.Test;
+
+import static com.cydeo.utilities.NewsTestBase.*;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 public class P02_SpartanSpecTest extends SpartanNewTestBase {
@@ -39,6 +41,18 @@ public class P02_SpartanSpecTest extends SpartanNewTestBase {
                 .then().spec(resSpec);
 
     }
+
+    @Test
+    public void getSingleSpartanWithSpecReq() {
+
+        given().spec(reqSpec).
+                pathParam("id",3).
+                when().get("/spartans/{id}").prettyPeek().
+                then().spec(resSpec)
+                .body("id",is(3));
+
+    }
+
 
 
 
