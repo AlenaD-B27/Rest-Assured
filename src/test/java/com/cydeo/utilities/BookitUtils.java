@@ -65,7 +65,7 @@ public class BookitUtils {
 
     public static RequestSpecification getRequestSpec(String role){
         return given().log().all()
-                .header("Authorization", BookitUtils.getTokenByRole(role))
+                .header("Authorization", getTokenByRole(role))
                 .accept(ContentType.JSON);
     }
 
