@@ -29,4 +29,23 @@ public class P03_BookitSpecTest extends BookitTestBase {
                 .body("firstName",is("Barbabas"));
 
     }
+
+    /***
+     *
+     *  Create a Parametirized test by using csv file as userInfo.csv
+     *
+     *   role , firstName
+     *   student-member,Raymond
+     *   student-leader,Lissie
+     *   teacher,Barbabas
+     *
+     *
+     *    Send GET request /api/users/me for each data
+     *    Verify status code is 200
+     *    content type is JSON
+     *    FirstName is firstName from csv File
+     *
+     */
+
+    // TODO HOMEWORK
 }
