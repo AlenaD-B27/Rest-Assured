@@ -1,0 +1,4 @@
+username,password,id,statuscode
+admin,admin,5,200
+editor,editor,5,200
+user,user,5,200
