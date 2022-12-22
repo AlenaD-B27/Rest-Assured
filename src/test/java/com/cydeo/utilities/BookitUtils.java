@@ -1,6 +1,8 @@
 package com.cydeo.utilities;
 
 import io.restassured.http.ContentType;
+import io.restassured.specification.RequestSpecification;
+import io.restassured.specification.ResponseSpecification;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -59,6 +61,16 @@ public class BookitUtils {
 
         return  "Bearer " + accessToken;
 
+    }
+
+    public static RequestSpecification getRequestSpec(String role){
+        return given().log().all()
+                .header("Authorization", BookitUtils.getTokenByRole(role))
+                .accept(ContentType.JSON);
+    }
+
+    public static ResponseSpecification getResponseSpec(int statusCode){
+        return expect().statusCode(statusCode).contentType(ContentType.JSON);
     }
 
 

@@ -1,0 +1,31 @@
+package com.cydeo.day13;
+
+import com.cydeo.utilities.BookitTestBase;
+import com.cydeo.utilities.BookitUtils;
+import io.restassured.http.ContentType;
+import org.junit.jupiter.api.Test;
+
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.*;
+public class P03_BookitSpecTest extends BookitTestBase {
+    @Test
+    public void test1() {
+
+        given().log().all()
+                .header("Authorization", BookitUtils.getTokenByRole("teacher"))
+                .accept(ContentType.JSON)
+                .when().get("/api/users/me")
+                .then().statusCode(200).contentType(ContentType.JSON);
+
+
+    }
+
+    @Test
+    public void test2() {
+
+        given().spec(BookitUtils.getRequestSpec("teacher"))
+                .when().get("/api/users/me")
+                .then().spec(BookitUtils.getResponseSpec(200));
+
+    }
+}
