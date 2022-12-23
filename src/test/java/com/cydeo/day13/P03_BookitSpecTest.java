@@ -4,6 +4,8 @@ import com.cydeo.utilities.BookitTestBase;
 import com.cydeo.utilities.BookitUtils;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
@@ -48,4 +50,13 @@ public class P03_BookitSpecTest extends BookitTestBase {
      */
 
     // TODO HOMEWORK
+
+    @CsvFileSource(resources = "/userInfo.csv", numLinesToSkip = 1)
+    @ParameterizedTest
+    public void getMeRequest(String role, String firstName){
+        given().spec(BookitUtils.getRequestSpec(role))
+                .when().get("/api/users/me").prettyPeek()
+                .then().spec(BookitUtils.getResponseSpec(200))
+                .body("firstName",is (firstName));
+    }
 }
